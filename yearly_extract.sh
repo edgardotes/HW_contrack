@@ -12,11 +12,11 @@ mkdir -p ${savepath};
 ###0.50
 cdo griddes /mnt/climstor/ecmwf/era5/raw/PL/data/2001/an_pl_ERA5_2001-08-28.nc > gridfile.txt
 
-for year in $(seq 1964 1970); do
+for year in $(seq 1971 1990); do
   echo "=== Processing $year ==="
 
 ##==extract t2m and compute mean day
-  loadpath=/mnt/climstor/ecmwf/era5/raw/SFC/data/${year}/an_sfc_ERA5*
+  loadpath=/mnt/climstor/ecmwf/era5/raw/SFC/data/${year}/an_sfc_ERA5_${year}*
   out="${savepath}/t2m_day_${year}_0p5deg.nc"
 
   # skip if final yearly file exists
@@ -27,16 +27,22 @@ for year in $(seq 1964 1970); do
 
 ###
   for fn in $loadpath; do
-    fn_new=$savepath/$(basename $fn)
-    output=${fn_new}
-    if [ ! -f ${output} ]; then
+#    fn_new=$savepath/$(basename $fn)
+#    output=${fn_new}
+    base="$(basename "${fn%.nc}")"
+    output="${savepath}/${base}_t2m_day_0p5deg.nc"   # distinct processed filename
+    if [ ! -f "$output" ]; then
         echo $output
         cdo -P 8 -L -b F32 -sellonlatbox,-180,180,0,90  -remapbil,gridfile.txt -daymean -select,name=t2m $fn $output
    fi
   done
 
-  cdo -mergetime $savepath/an_sfc_ERA5_${year}*.nc $out
+#  cdo -mergetime $savepath/an_sfc_ERA5_${year}*.nc $out
 
+# merge only the processed files
+  out="${savepath}/t2m_day_${year}_0p5deg.nc"
+  cdo -mergetime "${savepath}"/an_sfc_ERA5_${year}*.nc "$out"
+#
 
 # optional: 
   rm -r $savepath/an_sfc_ERA5_${year}*.nc
