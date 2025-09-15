@@ -12,7 +12,7 @@ mkdir -p ${savepath};
 ###0.50
 cdo griddes /mnt/climstor/ecmwf/era5/raw/PL/data/2001/an_pl_ERA5_2001-08-28.nc > gridfile.txt
 
-for year in $(seq 1971 1990); do
+for year in $(seq 1989 2010); do
   echo "=== Processing $year ==="
 
 ##==extract t2m and compute mean day
