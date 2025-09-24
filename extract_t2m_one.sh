@@ -2,9 +2,9 @@
 
 #set -euo pipefail
 
-year=1963
+year=1959
 ##==extract t2m and compute mean day
-loadpath=/mnt/climstor/ecmwf/era5/raw/SFC/data/${year}/an_sfc_ERA5*
+loadpath=/mnt/climstor/ecmwf/era5/raw/SFC/data/${year}/an_sfc_ERA5_${year}*
 savepath=/scratch2/edolores/era5/TS_era5
 mkdir -p ${savepath};
 
