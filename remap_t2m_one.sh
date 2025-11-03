@@ -3,7 +3,7 @@
 year=2023
 ##==extract t2m and compute mean day
 loadpath=/capstor/store1/cscs/userlab/cwp03/zemanc/Data_Dyamond_PostProcessed/out_7/remap_t_2m_${year}*
-savepath=/capstor/scratch/cscs/edolores/ICON_2KM/TS_era5
+savepath=/capstor/scratch/cscs/edolores/EXCLAIM/ICON_2KM/TS
 mkdir -p ${savepath};
 
 ###create grid
