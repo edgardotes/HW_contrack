@@ -1,21 +1,28 @@
 #!/bin/bash
+#
+#SBATCH --account=cwp03
+#SBATCH --job-name=test
+#SBATCH --time=01:00:00
+#SBATCH --nodes=4
+#SBATCH --output=test.o
+#SBATCH --error=test.e
 
-#set -euo pipefail
+###########
+# ERA5
+#############
 
-year=1959
+year=2024
+
 ##==extract t2m and compute mean day
-loadpath=/mnt/climstor/ecmwf/era5/raw/PL/data/${year}/an_pl_ERA5_${year}*
-savepath=/scratch2/edolores/era5/T850_era5
+#loadpath=/capstor/scratch/cscs/edolores/OBS/ERA5/tmp/era5_t850_${year}*
+loadpath=/capstor/scratch/cscs/edolores/OBS/ERA5/tmp/era5_z500_${year}*
+
+#savepath=/capstor/scratch/cscs/edolores/OBS/ERA5/T850_era5
+savepath=/capstor/scratch/cscs/edolores/OBS/ERA5/Z500_era5
 mkdir -p ${savepath};
 
-###create grid
-##0.25
-#cdo griddes /mnt/climstor/ecmwf/era5/raw/SFC/data/1959/an_sfc_ERA5_1959-08-26.nc > gridfile.txt
-###0.50
-#cdo griddes /mnt/climstor/ecmwf/era5/raw/PL/data/2001/an_pl_ERA5_2001-08-28.nc > gridfile.txt
-
-out="${savepath}/t850_day_${year}_0p5deg.nc"
-
+#out="${savepath}/t850_day_${year}_0p5deg.nc"
+out="${savepath}/z500_day_${year}_0p5deg.nc"
 
 ###
 for fn in $loadpath; do
@@ -23,13 +30,16 @@ for fn in $loadpath; do
     output=${fn_new}
     if [ ! -f ${output} ]; then
         echo $output
-        cdo -P 8 -L -b F32 -sellonlatbox,-180,180,0,90  -daymean -select,name=t,level=850 $fn $output
+#        cdo -P 8 -L -b F32 -sellonlatbox,-180,180,0,90  -remapbil,gridfile.txt -daymean -select,name=t,level=850 $fn $output
+        cdo -P 8 -L -b F32 -sellonlatbox,-180,180,0,90  -remapbil,gridfile.txt -daymean -select,name=z,level=500 $fn $output
    fi
 done
 
-cdo -mergetime $savepath/an_pl_ERA5_${year}*.nc $out
+#cdo -mergetime $savepath/era5_t850_${year}*.nc $out
+cdo -mergetime $savepath/era5_z500_${year}*.nc $out
 
 
 # optional: 
-rm -r $savepath/an_pl_ERA5_${year}*.nc
+#rm -r $savepath/era5_t850_${year}*.nc
+rm -r $savepath/era5_z500_${year}*.nc
 

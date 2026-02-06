@@ -1,8 +1,9 @@
 #!/bin/bash
 
-#set -euo pipefail
+###########
+# ERA5 IN CLIMCAL 
+##########
 
-#year=1963
 savepath=/scratch2/edolores/era5/TS_era5
 mkdir -p ${savepath};
 

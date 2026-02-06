@@ -7,12 +7,15 @@
 #SBATCH --output=test.o
 #SBATCH --error=test.e
 
+###########
+# ERA5
+#############
+
 year=2024
 ##==extract t2m and compute mean day
-#loadpath=/mnt/climstor/ecmwf/era5/raw/SFC/data/${year}/an_sfc_ERA5_${year}*
 loadpath=/capstor/scratch/cscs/edolores/OBS/ERA5/tmp/era5_t2m_${year}*
-#savepath=/scratch2/edolores/era5/TS_era5
-savepath=/capstor/scratch/cscs/edolores/OBS/ERA5/TS_era5
+#savepath=/capstor/scratch/cscs/edolores/OBS/ERA5/TS_era5
+savepath=/capstor/scratch/cscs/edolores/OBS/ERA5/TS_era5/SH
 mkdir -p ${savepath};
 
 ###create grid
@@ -29,7 +32,8 @@ for fn in $loadpath; do
     output=${fn_new}
     if [ ! -f ${output} ]; then
         echo $output
-        cdo -P 8 -L -b F32 -sellonlatbox,-180,180,0,90  -remapbil,gridfile.txt -daymean -select,name=t2m $fn $output
+#        cdo -P 8 -L -b F32 -sellonlatbox,-180,180,0,90  -remapbil,gridfile.txt -daymean -select,name=t2m $fn $output
+        cdo -P 8 -L -b F32 -sellonlatbox,-180,180,-90,0  -remapbil,gridfile.txt -daymean -select,name=t2m $fn $output
    fi
 done
 

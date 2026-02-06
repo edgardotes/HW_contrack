@@ -1,5 +1,9 @@
 #!/bin/bash
 
+###########
+# ERA5 IN CLIMCAL
+#############
+
 #set -euo pipefail
 
 savepath=/scratch2/edolores/era5/T850_era5
