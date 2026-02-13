@@ -7,7 +7,7 @@
 #SBATCH --output=test.o
 #SBATCH --error=test.e
 
-# Keep only essentials; adjust variable names to your file (common ICON names shown)
+# Keep only essentials; adjust variable names to the file (common ICON names shown)
 #ncks -O \
 #  -v clon,clat,clon_vertices,clat_vertices,cell_area \
 #  /capstor/scratch/cscs/edolores/EXCLAIM/ICON_2KM/icon_grid_0056_R02B10_G.nc \

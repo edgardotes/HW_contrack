@@ -8,21 +8,21 @@
 #SBATCH --error=test.e
 
 ## tmax, tmin, t2m (tmean)
-var=t2m   # choose: tmin | tmax | t2m
+var=t2m  # choose: tmin | tmax | t2m
 
 ###ICON 2.5 km
 #loadpath=/capstor/store1/cscs/userlab/cwp03/zemanc/Data_Dyamond_PostProcessed/out_7/
 #savepath=/capstor/scratch/cscs/edolores/EXCLAIM/ICON_2KM/TS
 
 ###ICON 10 km
-#loadpath=/capstor/store1/cscs/userlab/cwp03/zemanc/Data_Dyamond_PostProcessed_R02B08/out_7/
-#savepath=/capstor/scratch/cscs/edolores/EXCLAIM/ICON_10KM/TS
+loadpath=/capstor/store1/cscs/userlab/cwp03/zemanc/Data_Dyamond_PostProcessed_R02B08_shallow_only/out_7/
+savepath=/capstor/scratch/cscs/edolores/EXCLAIM/ICON_10KM/TS
 #savepath=/capstor/scratch/cscs/edolores/EXCLAIM/ICON_10KM/TMAX
 #savepath=/capstor/scratch/cscs/edolores/EXCLAIM/ICON_10KM/TMIN
 
 ###ICON 10 km ON
-loadpath=/capstor/store1/cscs/userlab/cwp03/zemanc/Data_Dyamond_PostProcessed_R02B08_shallow_only/out_7/
-savepath=/capstor/scratch/cscs/edolores/EXCLAIM/ICON_10KM-ON/TS
+#loadpath=/capstor/store1/cscs/userlab/cwp03/zemanc/Data_Dyamond_PostProcessed_R02B08/out_7/
+#savepath=/capstor/scratch/cscs/edolores/EXCLAIM/ICON_10KM-ON/TS
 #savepath=/capstor/scratch/cscs/edolores/EXCLAIM/ICON_10KM-ON/TMAX
 #savepath=/capstor/scratch/cscs/edolores/EXCLAIM/ICON_10KM-ON/TMIN
 

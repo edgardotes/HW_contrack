@@ -7,16 +7,27 @@
 #SBATCH --output=test.o
 #SBATCH --error=test.e
 
+###2km
+#MFOLDER_IN=/capstor/store1/cscs/userlab/cwp03/zemanc/Data_Dyamond_PostProcessed
+#MFOLDER_OUT=/capstor/scratch/cscs/edolores/EXCLAIM/ICON_2KM/
+### 10 km 
+MFOLDER_IN=/capstor/store1/cscs/userlab/cwp03/zemanc/Data_Dyamond_PostProcessed_R02B08_shallow_only/
+MFOLDER_OUT=/capstor/scratch/cscs/edolores/EXCLAIM/ICON_10KM/
+### 10 km on
+#MFOLDER_IN=/capstor/store1/cscs/userlab/cwp03/zemanc/Data_Dyamond_PostProcessed_R02B08/
+#MFOLDER_OUT=/capstor/scratch/cscs/edolores/EXCLAIM/ICON_10KM-ON/
+
 year=2024
+
 ##==extract Z from remaped, 3 hourly with 37 levels
-loadpath=/capstor/store1/cscs/userlab/cwp03/zemanc/Data_Dyamond_PostProcessed/out_1_1/remap_geopot_${year}*
+loadpath=$MFOLDER_IN/out_1_1/remap_geopot_${year}*
 ###UWIND
 #loadpath=/capstor/store1/cscs/userlab/cwp03/zemanc/Data_Dyamond_PostProcessed/out_1_4/remap_u_${year}*
 ###Temperature
 #loadpath=/capstor/store1/cscs/userlab/cwp03/zemanc/Data_Dyamond_PostProcessed/out_1_3/remap_temp_${year}*
 
 ### saving
-savepath=/capstor/scratch/cscs/edolores/EXCLAIM/ICON_2KM/Z500
+savepath=$MFOLDER_OUT/Z500
 #savepath=/capstor/scratch/cscs/edolores/EXCLAIM/ICON_2KM/U500
 #savepath=/capstor/scratch/cscs/edolores/EXCLAIM/ICON_2KM/T850
 mkdir -p ${savepath};
