@@ -11,11 +11,11 @@
 #MFOLDER_IN=/capstor/store1/cscs/userlab/cwp03/zemanc/Data_Dyamond_PostProcessed
 #MFOLDER_OUT=/capstor/scratch/cscs/edolores/EXCLAIM/ICON_2KM/
 ### 10 km 
-MFOLDER_IN=/capstor/store1/cscs/userlab/cwp03/zemanc/Data_Dyamond_PostProcessed_R02B08_shallow_only/
-MFOLDER_OUT=/capstor/scratch/cscs/edolores/EXCLAIM/ICON_10KM/
+#MFOLDER_IN=/capstor/store1/cscs/userlab/cwp03/zemanc/Data_Dyamond_PostProcessed_R02B08_shallow_only/
+#MFOLDER_OUT=/capstor/scratch/cscs/edolores/EXCLAIM/ICON_10KM/
 ### 10 km on
-#MFOLDER_IN=/capstor/store1/cscs/userlab/cwp03/zemanc/Data_Dyamond_PostProcessed_R02B08/
-#MFOLDER_OUT=/capstor/scratch/cscs/edolores/EXCLAIM/ICON_10KM-ON/
+MFOLDER_IN=/capstor/store1/cscs/userlab/cwp03/zemanc/Data_Dyamond_PostProcessed_R02B08/
+MFOLDER_OUT=/capstor/scratch/cscs/edolores/EXCLAIM/ICON_10KM-ON/
 
 year=2024
 
